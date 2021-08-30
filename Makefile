@@ -1,5 +1,5 @@
 PACKAGE 					?= gopinto
-SOURCE_URL 					?= "https://pinto.irgendwo.co/api/swagger/dns-swagger.json"
+SOURCE_URL 					?= "https://test.camao.domains.fascicularis.de/api/swagger/dns-swagger.json"
 
 GIT_REPOSITORY_NAME 		?= "project-pinto-sdk-go"
 GIT_REPOSITORY_NAMESPACE 	?= "camaoag"

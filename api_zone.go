@@ -24,91 +24,91 @@ var (
 	_ _context.Context
 )
 
-type ZonesApi interface {
+type ZoneApi interface {
 
 	/*
-	 * DnsApiZonesDelete Deletes a DNS zone from the passed provider
+	 * ApiDnsZoneDelete Deletes a DNS zone from the passed provider
 	 * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	 * @return ApiDnsApiZonesDeleteRequest
+	 * @return ApiApiDnsZoneDeleteRequest
 	 */
-	DnsApiZonesDelete(ctx _context.Context) ApiDnsApiZonesDeleteRequest
+	ApiDnsZoneDelete(ctx _context.Context) ApiApiDnsZoneDeleteRequest
 
 	/*
-	 * DnsApiZonesDeleteExecute executes the request
+	 * ApiDnsZoneDeleteExecute executes the request
 	 */
-	DnsApiZonesDeleteExecute(r ApiDnsApiZonesDeleteRequest) (*_nethttp.Response, GenericOpenAPIError)
+	ApiDnsZoneDeleteExecute(r ApiApiDnsZoneDeleteRequest) (*_nethttp.Response, GenericOpenAPIError)
 
 	/*
-	 * DnsApiZonesGet Retrieves the DNS zones assigned to the account
+	 * ApiDnsZoneGet Retrieves the DNS zones assigned to the account
 	 * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	 * @return ApiDnsApiZonesGetRequest
+	 * @return ApiApiDnsZoneGetRequest
 	 */
-	DnsApiZonesGet(ctx _context.Context) ApiDnsApiZonesGetRequest
+	ApiDnsZoneGet(ctx _context.Context) ApiApiDnsZoneGetRequest
 
 	/*
-	 * DnsApiZonesGetExecute executes the request
+	 * ApiDnsZoneGetExecute executes the request
 	 * @return []Zone
 	 */
-	DnsApiZonesGetExecute(r ApiDnsApiZonesGetRequest) ([]Zone, *_nethttp.Response, GenericOpenAPIError)
+	ApiDnsZoneGetExecute(r ApiApiDnsZoneGetRequest) ([]Zone, *_nethttp.Response, GenericOpenAPIError)
 
 	/*
-	 * DnsApiZonesPost Creates a new DNS zone
+	 * ApiDnsZonePost Creates a new DNS zone
 	 * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	 * @return ApiDnsApiZonesPostRequest
+	 * @return ApiApiDnsZonePostRequest
 	 */
-	DnsApiZonesPost(ctx _context.Context) ApiDnsApiZonesPostRequest
+	ApiDnsZonePost(ctx _context.Context) ApiApiDnsZonePostRequest
 
 	/*
-	 * DnsApiZonesPostExecute executes the request
+	 * ApiDnsZonePostExecute executes the request
 	 * @return Zone
 	 */
-	DnsApiZonesPostExecute(r ApiDnsApiZonesPostRequest) (Zone, *_nethttp.Response, GenericOpenAPIError)
+	ApiDnsZonePostExecute(r ApiApiDnsZonePostRequest) (Zone, *_nethttp.Response, GenericOpenAPIError)
 
 	/*
-	 * DnsApiZonesZoneGet Loads the specified DNS zone
+	 * ApiDnsZoneZoneGet Loads the specified DNS zone
 	 * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	 * @param zone The name of the zone to query.
-	 * @return ApiDnsApiZonesZoneGetRequest
+	 * @return ApiApiDnsZoneZoneGetRequest
 	 */
-	DnsApiZonesZoneGet(ctx _context.Context, zone string) ApiDnsApiZonesZoneGetRequest
+	ApiDnsZoneZoneGet(ctx _context.Context, zone string) ApiApiDnsZoneZoneGetRequest
 
 	/*
-	 * DnsApiZonesZoneGetExecute executes the request
+	 * ApiDnsZoneZoneGetExecute executes the request
 	 * @return Zone
 	 */
-	DnsApiZonesZoneGetExecute(r ApiDnsApiZonesZoneGetRequest) (Zone, *_nethttp.Response, GenericOpenAPIError)
+	ApiDnsZoneZoneGetExecute(r ApiApiDnsZoneZoneGetRequest) (Zone, *_nethttp.Response, GenericOpenAPIError)
 }
 
-// ZonesApiService ZonesApi service
-type ZonesApiService service
+// ZoneApiService ZoneApi service
+type ZoneApiService service
 
-type ApiDnsApiZonesDeleteRequest struct {
+type ApiApiDnsZoneDeleteRequest struct {
 	ctx         _context.Context
-	ApiService  ZonesApi
+	ApiService  ZoneApi
 	name        *string
 	xApiOptions *string
 }
 
-func (r ApiDnsApiZonesDeleteRequest) Name(name string) ApiDnsApiZonesDeleteRequest {
+func (r ApiApiDnsZoneDeleteRequest) Name(name string) ApiApiDnsZoneDeleteRequest {
 	r.name = &name
 	return r
 }
-func (r ApiDnsApiZonesDeleteRequest) XApiOptions(xApiOptions string) ApiDnsApiZonesDeleteRequest {
+func (r ApiApiDnsZoneDeleteRequest) XApiOptions(xApiOptions string) ApiApiDnsZoneDeleteRequest {
 	r.xApiOptions = &xApiOptions
 	return r
 }
 
-func (r ApiDnsApiZonesDeleteRequest) Execute() (*_nethttp.Response, GenericOpenAPIError) {
-	return r.ApiService.DnsApiZonesDeleteExecute(r)
+func (r ApiApiDnsZoneDeleteRequest) Execute() (*_nethttp.Response, GenericOpenAPIError) {
+	return r.ApiService.ApiDnsZoneDeleteExecute(r)
 }
 
 /*
- * DnsApiZonesDelete Deletes a DNS zone from the passed provider
+ * ApiDnsZoneDelete Deletes a DNS zone from the passed provider
  * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- * @return ApiDnsApiZonesDeleteRequest
+ * @return ApiApiDnsZoneDeleteRequest
  */
-func (a *ZonesApiService) DnsApiZonesDelete(ctx _context.Context) ApiDnsApiZonesDeleteRequest {
-	return ApiDnsApiZonesDeleteRequest{
+func (a *ZoneApiService) ApiDnsZoneDelete(ctx _context.Context) ApiApiDnsZoneDeleteRequest {
+	return ApiApiDnsZoneDeleteRequest{
 		ApiService: a,
 		ctx:        ctx,
 	}
@@ -117,7 +117,7 @@ func (a *ZonesApiService) DnsApiZonesDelete(ctx _context.Context) ApiDnsApiZones
 /*
  * Execute executes the request
  */
-func (a *ZonesApiService) DnsApiZonesDeleteExecute(r ApiDnsApiZonesDeleteRequest) (*_nethttp.Response, GenericOpenAPIError) {
+func (a *ZoneApiService) ApiDnsZoneDeleteExecute(r ApiApiDnsZoneDeleteRequest) (*_nethttp.Response, GenericOpenAPIError) {
 	var (
 		localVarHTTPMethod   = _nethttp.MethodDelete
 		localVarPostBody     interface{}
@@ -127,13 +127,13 @@ func (a *ZonesApiService) DnsApiZonesDeleteExecute(r ApiDnsApiZonesDeleteRequest
 		executionError       GenericOpenAPIError
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ZonesApiService.DnsApiZonesDelete")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ZoneApiService.ApiDnsZoneDelete")
 	if err != nil {
 		executionError.error = err.Error()
 		return nil, executionError
 	}
 
-	localVarPath := localBasePath + "/dns/api/Zones"
+	localVarPath := localBasePath + "/api/dns/Zone"
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := _neturl.Values{}
@@ -197,28 +197,28 @@ func (a *ZonesApiService) DnsApiZonesDeleteExecute(r ApiDnsApiZonesDeleteRequest
 	return localVarHTTPResponse, executionError
 }
 
-type ApiDnsApiZonesGetRequest struct {
+type ApiApiDnsZoneGetRequest struct {
 	ctx         _context.Context
-	ApiService  ZonesApi
+	ApiService  ZoneApi
 	xApiOptions *string
 }
 
-func (r ApiDnsApiZonesGetRequest) XApiOptions(xApiOptions string) ApiDnsApiZonesGetRequest {
+func (r ApiApiDnsZoneGetRequest) XApiOptions(xApiOptions string) ApiApiDnsZoneGetRequest {
 	r.xApiOptions = &xApiOptions
 	return r
 }
 
-func (r ApiDnsApiZonesGetRequest) Execute() ([]Zone, *_nethttp.Response, GenericOpenAPIError) {
-	return r.ApiService.DnsApiZonesGetExecute(r)
+func (r ApiApiDnsZoneGetRequest) Execute() ([]Zone, *_nethttp.Response, GenericOpenAPIError) {
+	return r.ApiService.ApiDnsZoneGetExecute(r)
 }
 
 /*
- * DnsApiZonesGet Retrieves the DNS zones assigned to the account
+ * ApiDnsZoneGet Retrieves the DNS zones assigned to the account
  * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- * @return ApiDnsApiZonesGetRequest
+ * @return ApiApiDnsZoneGetRequest
  */
-func (a *ZonesApiService) DnsApiZonesGet(ctx _context.Context) ApiDnsApiZonesGetRequest {
-	return ApiDnsApiZonesGetRequest{
+func (a *ZoneApiService) ApiDnsZoneGet(ctx _context.Context) ApiApiDnsZoneGetRequest {
+	return ApiApiDnsZoneGetRequest{
 		ApiService: a,
 		ctx:        ctx,
 	}
@@ -228,7 +228,7 @@ func (a *ZonesApiService) DnsApiZonesGet(ctx _context.Context) ApiDnsApiZonesGet
  * Execute executes the request
  * @return []Zone
  */
-func (a *ZonesApiService) DnsApiZonesGetExecute(r ApiDnsApiZonesGetRequest) ([]Zone, *_nethttp.Response, GenericOpenAPIError) {
+func (a *ZoneApiService) ApiDnsZoneGetExecute(r ApiApiDnsZoneGetRequest) ([]Zone, *_nethttp.Response, GenericOpenAPIError) {
 	var (
 		localVarHTTPMethod   = _nethttp.MethodGet
 		localVarPostBody     interface{}
@@ -239,13 +239,13 @@ func (a *ZonesApiService) DnsApiZonesGetExecute(r ApiDnsApiZonesGetRequest) ([]Z
 		localVarReturnValue  []Zone
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ZonesApiService.DnsApiZonesGet")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ZoneApiService.ApiDnsZoneGet")
 	if err != nil {
 		executionError.error = err.Error()
 		return localVarReturnValue, nil, executionError
 	}
 
-	localVarPath := localBasePath + "/dns/api/Zones"
+	localVarPath := localBasePath + "/api/dns/Zone"
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := _neturl.Values{}
@@ -313,33 +313,33 @@ func (a *ZonesApiService) DnsApiZonesGetExecute(r ApiDnsApiZonesGetRequest) ([]Z
 	return localVarReturnValue, localVarHTTPResponse, executionError
 }
 
-type ApiDnsApiZonesPostRequest struct {
+type ApiApiDnsZonePostRequest struct {
 	ctx                    _context.Context
-	ApiService             ZonesApi
+	ApiService             ZoneApi
 	xApiOptions            *string
 	createZoneRequestModel *CreateZoneRequestModel
 }
 
-func (r ApiDnsApiZonesPostRequest) XApiOptions(xApiOptions string) ApiDnsApiZonesPostRequest {
+func (r ApiApiDnsZonePostRequest) XApiOptions(xApiOptions string) ApiApiDnsZonePostRequest {
 	r.xApiOptions = &xApiOptions
 	return r
 }
-func (r ApiDnsApiZonesPostRequest) CreateZoneRequestModel(createZoneRequestModel CreateZoneRequestModel) ApiDnsApiZonesPostRequest {
+func (r ApiApiDnsZonePostRequest) CreateZoneRequestModel(createZoneRequestModel CreateZoneRequestModel) ApiApiDnsZonePostRequest {
 	r.createZoneRequestModel = &createZoneRequestModel
 	return r
 }
 
-func (r ApiDnsApiZonesPostRequest) Execute() (Zone, *_nethttp.Response, GenericOpenAPIError) {
-	return r.ApiService.DnsApiZonesPostExecute(r)
+func (r ApiApiDnsZonePostRequest) Execute() (Zone, *_nethttp.Response, GenericOpenAPIError) {
+	return r.ApiService.ApiDnsZonePostExecute(r)
 }
 
 /*
- * DnsApiZonesPost Creates a new DNS zone
+ * ApiDnsZonePost Creates a new DNS zone
  * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- * @return ApiDnsApiZonesPostRequest
+ * @return ApiApiDnsZonePostRequest
  */
-func (a *ZonesApiService) DnsApiZonesPost(ctx _context.Context) ApiDnsApiZonesPostRequest {
-	return ApiDnsApiZonesPostRequest{
+func (a *ZoneApiService) ApiDnsZonePost(ctx _context.Context) ApiApiDnsZonePostRequest {
+	return ApiApiDnsZonePostRequest{
 		ApiService: a,
 		ctx:        ctx,
 	}
@@ -349,7 +349,7 @@ func (a *ZonesApiService) DnsApiZonesPost(ctx _context.Context) ApiDnsApiZonesPo
  * Execute executes the request
  * @return Zone
  */
-func (a *ZonesApiService) DnsApiZonesPostExecute(r ApiDnsApiZonesPostRequest) (Zone, *_nethttp.Response, GenericOpenAPIError) {
+func (a *ZoneApiService) ApiDnsZonePostExecute(r ApiApiDnsZonePostRequest) (Zone, *_nethttp.Response, GenericOpenAPIError) {
 	var (
 		localVarHTTPMethod   = _nethttp.MethodPost
 		localVarPostBody     interface{}
@@ -360,13 +360,13 @@ func (a *ZonesApiService) DnsApiZonesPostExecute(r ApiDnsApiZonesPostRequest) (Z
 		localVarReturnValue  Zone
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ZonesApiService.DnsApiZonesPost")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ZoneApiService.ApiDnsZonePost")
 	if err != nil {
 		executionError.error = err.Error()
 		return localVarReturnValue, nil, executionError
 	}
 
-	localVarPath := localBasePath + "/dns/api/Zones"
+	localVarPath := localBasePath + "/api/dns/Zone"
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := _neturl.Values{}
@@ -440,30 +440,30 @@ func (a *ZonesApiService) DnsApiZonesPostExecute(r ApiDnsApiZonesPostRequest) (Z
 	return localVarReturnValue, localVarHTTPResponse, executionError
 }
 
-type ApiDnsApiZonesZoneGetRequest struct {
+type ApiApiDnsZoneZoneGetRequest struct {
 	ctx         _context.Context
-	ApiService  ZonesApi
+	ApiService  ZoneApi
 	zone        string
 	xApiOptions *string
 }
 
-func (r ApiDnsApiZonesZoneGetRequest) XApiOptions(xApiOptions string) ApiDnsApiZonesZoneGetRequest {
+func (r ApiApiDnsZoneZoneGetRequest) XApiOptions(xApiOptions string) ApiApiDnsZoneZoneGetRequest {
 	r.xApiOptions = &xApiOptions
 	return r
 }
 
-func (r ApiDnsApiZonesZoneGetRequest) Execute() (Zone, *_nethttp.Response, GenericOpenAPIError) {
-	return r.ApiService.DnsApiZonesZoneGetExecute(r)
+func (r ApiApiDnsZoneZoneGetRequest) Execute() (Zone, *_nethttp.Response, GenericOpenAPIError) {
+	return r.ApiService.ApiDnsZoneZoneGetExecute(r)
 }
 
 /*
- * DnsApiZonesZoneGet Loads the specified DNS zone
+ * ApiDnsZoneZoneGet Loads the specified DNS zone
  * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param zone The name of the zone to query.
- * @return ApiDnsApiZonesZoneGetRequest
+ * @return ApiApiDnsZoneZoneGetRequest
  */
-func (a *ZonesApiService) DnsApiZonesZoneGet(ctx _context.Context, zone string) ApiDnsApiZonesZoneGetRequest {
-	return ApiDnsApiZonesZoneGetRequest{
+func (a *ZoneApiService) ApiDnsZoneZoneGet(ctx _context.Context, zone string) ApiApiDnsZoneZoneGetRequest {
+	return ApiApiDnsZoneZoneGetRequest{
 		ApiService: a,
 		ctx:        ctx,
 		zone:       zone,
@@ -474,7 +474,7 @@ func (a *ZonesApiService) DnsApiZonesZoneGet(ctx _context.Context, zone string) 
  * Execute executes the request
  * @return Zone
  */
-func (a *ZonesApiService) DnsApiZonesZoneGetExecute(r ApiDnsApiZonesZoneGetRequest) (Zone, *_nethttp.Response, GenericOpenAPIError) {
+func (a *ZoneApiService) ApiDnsZoneZoneGetExecute(r ApiApiDnsZoneZoneGetRequest) (Zone, *_nethttp.Response, GenericOpenAPIError) {
 	var (
 		localVarHTTPMethod   = _nethttp.MethodGet
 		localVarPostBody     interface{}
@@ -485,13 +485,13 @@ func (a *ZonesApiService) DnsApiZonesZoneGetExecute(r ApiDnsApiZonesZoneGetReque
 		localVarReturnValue  Zone
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ZonesApiService.DnsApiZonesZoneGet")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ZoneApiService.ApiDnsZoneZoneGet")
 	if err != nil {
 		executionError.error = err.Error()
 		return localVarReturnValue, nil, executionError
 	}
 
-	localVarPath := localBasePath + "/dns/api/Zones/{zone}"
+	localVarPath := localBasePath + "/api/dns/Zone/{zone}"
 	localVarPath = strings.Replace(localVarPath, "{"+"zone"+"}", _neturl.PathEscape(parameterToString(r.zone, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)

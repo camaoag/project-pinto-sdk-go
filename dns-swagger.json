@@ -1,0 +1,600 @@
+{
+  "openapi": "3.0.1",
+  "info": {
+    "title": "Fava - OpenApi Gateway - DNS",
+    "description": "",
+    "version": "v1"
+  },
+  "paths": {
+    "/api/dns/Record": {
+      "post": {
+        "tags": [
+          "Record"
+        ],
+        "summary": "Creates a new DNS resource record",
+        "parameters": [
+          {
+            "name": "x-api-options",
+            "in": "header",
+            "description": "Data used to access the API <br /><br />\r\nSchema: <br />\r\n{ <br />\r\n\"access_options\": { <br />\r\n\"provider\": \"provider\", <br />\r\n\"environment\": \"environment\", <br />\r\n\"credentials_id\": \"00000000-0000-0000-0000-000000000000\" <br />\r\n}, <br />\r\n\"meta\": { <br />\r\n\"additionalKey\": \"keyValue\" <br />\r\n} <br />\r\n}",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "description": "Data used to create a DNS resource record",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateRecordRequestModel"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateRecordRequestModel"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateRecordRequestModel"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "description": "Returns the newly created item",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/Record"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Record"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Record"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad request"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "409": {
+            "description": "Conflict"
+          },
+          "500": {
+            "description": "Something went horribly wrong on the server side."
+          }
+        }
+      },
+      "get": {
+        "tags": [
+          "Record"
+        ],
+        "summary": "Retrieves the DNS zone's resource records",
+        "parameters": [
+          {
+            "name": "Zone",
+            "in": "query",
+            "description": "DNS zone to query.",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "RecordType",
+            "in": "query",
+            "description": "Filter by the record type.",
+            "schema": {
+              "$ref": "#/components/schemas/RecordType"
+            }
+          },
+          {
+            "name": "Name",
+            "in": "query",
+            "description": "Filter by the record name.",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "x-api-options",
+            "in": "header",
+            "description": "Data used to access the API <br /><br />\r\nSchema: <br />\r\n{ <br />\r\n\"access_options\": { <br />\r\n\"provider\": \"provider\", <br />\r\n\"environment\": \"environment\", <br />\r\n\"credentials_id\": \"00000000-0000-0000-0000-000000000000\" <br />\r\n}, <br />\r\n\"meta\": { <br />\r\n\"additionalKey\": \"keyValue\" <br />\r\n} <br />\r\n}",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Returns the DNS records of the specified DNS zone",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Record"
+                  }
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Record"
+                  }
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Record"
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad request"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "500": {
+            "description": "Something went horribly wrong on the server side."
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "Record"
+        ],
+        "summary": "Deletes records which match the specified criterias",
+        "parameters": [
+          {
+            "name": "Zone",
+            "in": "query",
+            "description": "Name of the DNS zone to delete a record of.",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "RecordType",
+            "in": "query",
+            "description": "The record type of the record to delete.",
+            "required": true,
+            "schema": {
+              "$ref": "#/components/schemas/RecordType"
+            }
+          },
+          {
+            "name": "Name",
+            "in": "query",
+            "description": "The record name of the record to delete.",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "x-api-options",
+            "in": "header",
+            "description": "Data used to access the API <br /><br />\r\nSchema: <br />\r\n{ <br />\r\n\"access_options\": { <br />\r\n\"provider\": \"provider\", <br />\r\n\"environment\": \"environment\", <br />\r\n\"credentials_id\": \"00000000-0000-0000-0000-000000000000\" <br />\r\n}, <br />\r\n\"meta\": { <br />\r\n\"additionalKey\": \"keyValue\" <br />\r\n} <br />\r\n}",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          },
+          "204": {
+            "description": "Successfully deleted"
+          },
+          "400": {
+            "description": "Bad request"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "500": {
+            "description": "Something went horribly wrong on the server side."
+          }
+        }
+      }
+    },
+    "/api/dns/Zone": {
+      "post": {
+        "tags": [
+          "Zone"
+        ],
+        "summary": "Creates a new DNS zone",
+        "parameters": [
+          {
+            "name": "x-api-options",
+            "in": "header",
+            "description": "Data used to access the API <br /><br />\r\nSchema: <br />\r\n{ <br />\r\n\"access_options\": { <br />\r\n\"provider\": \"provider\", <br />\r\n\"environment\": \"environment\", <br />\r\n\"credentials_id\": \"00000000-0000-0000-0000-000000000000\" <br />\r\n}, <br />\r\n\"meta\": { <br />\r\n\"additionalKey\": \"keyValue\" <br />\r\n} <br />\r\n}",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "description": "Data used to create a DNS zone",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateZoneRequestModel"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateZoneRequestModel"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateZoneRequestModel"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "description": "Returns the newly created DNS zone",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/Zone"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Zone"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Zone"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "409": {
+            "description": "Conflict"
+          },
+          "500": {
+            "description": "Something went horribly wrong on the server side."
+          }
+        }
+      },
+      "get": {
+        "tags": [
+          "Zone"
+        ],
+        "summary": "Retrieves the DNS zones assigned to the account",
+        "parameters": [
+          {
+            "name": "x-api-options",
+            "in": "header",
+            "description": "Data used to access the API <br /><br />\r\nSchema: <br />\r\n{ <br />\r\n\"access_options\": { <br />\r\n\"provider\": \"provider\", <br />\r\n\"environment\": \"environment\", <br />\r\n\"credentials_id\": \"00000000-0000-0000-0000-000000000000\" <br />\r\n}, <br />\r\n\"meta\": { <br />\r\n\"additionalKey\": \"keyValue\" <br />\r\n} <br />\r\n}",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "List of DNS zones associated with the account",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Zone"
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad request"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "404": {
+            "description": "DNS zone not found"
+          },
+          "500": {
+            "description": "Something went horribly wrong on the server side."
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "Zone"
+        ],
+        "summary": "Deletes a DNS zone from the passed provider",
+        "parameters": [
+          {
+            "name": "Name",
+            "in": "query",
+            "description": "Name of the DNS zone to delete.",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "x-api-options",
+            "in": "header",
+            "description": "Data used to access the API <br /><br />\r\nSchema: <br />\r\n{ <br />\r\n\"access_options\": { <br />\r\n\"provider\": \"provider\", <br />\r\n\"environment\": \"environment\", <br />\r\n\"credentials_id\": \"00000000-0000-0000-0000-000000000000\" <br />\r\n}, <br />\r\n\"meta\": { <br />\r\n\"additionalKey\": \"keyValue\" <br />\r\n} <br />\r\n}",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          },
+          "204": {
+            "description": "Zone was successfully deleted"
+          },
+          "400": {
+            "description": "Bad request"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "404": {
+            "description": "DNS zone not found"
+          },
+          "500": {
+            "description": "Something went horribly wrong on the server side."
+          }
+        }
+      }
+    },
+    "/api/dns/Zone/{zone}": {
+      "get": {
+        "tags": [
+          "Zone"
+        ],
+        "summary": "Loads the specified DNS zone",
+        "parameters": [
+          {
+            "name": "zone",
+            "in": "path",
+            "description": "The name of the zone to query.",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "x-api-options",
+            "in": "header",
+            "description": "Data used to access the API <br /><br />\r\nSchema: <br />\r\n{ <br />\r\n\"access_options\": { <br />\r\n\"provider\": \"provider\", <br />\r\n\"environment\": \"environment\", <br />\r\n\"credentials_id\": \"00000000-0000-0000-0000-000000000000\" <br />\r\n}, <br />\r\n\"meta\": { <br />\r\n\"additionalKey\": \"keyValue\" <br />\r\n} <br />\r\n}",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successfully loaded DNS zone",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/Zone"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Zone"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Zone"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad request"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "404": {
+            "description": "DNS zone not found"
+          },
+          "500": {
+            "description": "Something went horribly wrong on the server side."
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "CreateRecordRequestModel": {
+        "required": [
+          "data",
+          "name",
+          "type",
+          "zone"
+        ],
+        "type": "object",
+        "properties": {
+          "zone": {
+            "type": "string",
+            "description": "Name of the DNS zone to create a record for."
+          },
+          "name": {
+            "type": "string",
+            "description": "Name of the DNS record to create."
+          },
+          "class": {
+            "$ref": "#/components/schemas/RecordClass"
+          },
+          "type": {
+            "$ref": "#/components/schemas/RecordType"
+          },
+          "data": {
+            "type": "string",
+            "description": "The data of the record to create,"
+          },
+          "ttl": {
+            "type": "integer",
+            "description": "The time to live of the record to create.",
+            "format": "int32"
+          }
+        },
+        "additionalProperties": false
+      },
+      "CreateZoneRequestModel": {
+        "required": [
+          "name"
+        ],
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string",
+            "description": "Name of the DNS zone to create."
+          }
+        },
+        "additionalProperties": false
+      },
+      "Record": {
+        "required": [
+          "class",
+          "data",
+          "name",
+          "type"
+        ],
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string"
+          },
+          "type": {
+            "$ref": "#/components/schemas/RecordType"
+          },
+          "class": {
+            "$ref": "#/components/schemas/RecordClass"
+          },
+          "ttl": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "data": {
+            "type": "string"
+          }
+        },
+        "additionalProperties": false
+      },
+      "RecordClass": {
+        "enum": [
+          "IN",
+          "CS",
+          "CH",
+          "HS"
+        ],
+        "type": "string",
+        "description": "Resource record classes\r\nas defined in\r\n<see href=\"https://tools.ietf.org/html/rfc1035#section-3.2.4\">rfc1035</see>"
+      },
+      "RecordType": {
+        "enum": [
+          "A",
+          "NS",
+          "CNAME",
+          "SOA",
+          "PTR",
+          "MX",
+          "TXT",
+          "SRV",
+          "AAAA",
+          "SPF"
+        ],
+        "type": "string",
+        "description": "Resource record types\r\nas defined in\r\n<see href=\"https://tools.ietf.org/html/rfc1035#section-3.2.2\">rfc1035</see>"
+      },
+      "Zone": {
+        "required": [
+          "name"
+        ],
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string"
+          }
+        },
+        "additionalProperties": false
+      }
+    },
+    "securitySchemes": {
+      "oidc": {
+        "type": "oauth2",
+        "flows": {
+          "authorizationCode": {
+            "authorizationUrl": "https://localhost:9100/connect/authorize",
+            "tokenUrl": "https://localhost:9100/connect/token",
+            "scopes": {
+              "fava_business_api": "Fava - Business - API",
+              "fava_credentials_api": "Fava - Credentials - API",
+              "fava_openapi_gateway": "Fava - OpenApiGateway - API",
+              "pinto_citadel": "Pinto - Citadel - Certificates - API",
+              "pinto_nexus": "Pinto - Nexus - DNS - API"
+            }
+          }
+        }
+      }
+    }
+  },
+  "security": [
+    {
+      "oidc": [
+        "fava_business_api",
+        "fava_credentials_api",
+        "fava_openapi_gateway",
+        "pinto_citadel",
+        "pinto_nexus"
+      ]
+    }
+  ]
+}

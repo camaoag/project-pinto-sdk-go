@@ -4,15 +4,15 @@ All URIs are relative to *http://localhost*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**ApiDnsRecordsDelete**](RecordsApi.md#ApiDnsRecordsDelete) | **Delete** /api/dns/Records | Deletes records which match the specified criterias
-[**ApiDnsRecordsGet**](RecordsApi.md#ApiDnsRecordsGet) | **Get** /api/dns/Records | Retrieves the DNS zone&#39;s resource records
-[**ApiDnsRecordsPost**](RecordsApi.md#ApiDnsRecordsPost) | **Post** /api/dns/Records | Creates a new DNS resource record
+[**DnsApiRecordsDelete**](RecordsApi.md#DnsApiRecordsDelete) | **Delete** /dns/api/Records | Deletes records which match the specified criterias
+[**DnsApiRecordsGet**](RecordsApi.md#DnsApiRecordsGet) | **Get** /dns/api/Records | Retrieves the DNS zone&#39;s resource records
+[**DnsApiRecordsPost**](RecordsApi.md#DnsApiRecordsPost) | **Post** /dns/api/Records | Creates a new DNS resource record
 
 
 
-## ApiDnsRecordsDelete
+## DnsApiRecordsDelete
 
-> ApiDnsRecordsDelete(ctx).Provider(provider).Zone(zone).Name(name).RecordType(recordType).Environment(environment).RequestBody(requestBody).Execute()
+> DnsApiRecordsDelete(ctx).Zone(zone).RecordType(recordType).Name(name).XApiOptions(xApiOptions).Execute()
 
 Deletes records which match the specified criterias
 
@@ -29,18 +29,16 @@ import (
 )
 
 func main() {
-    provider := "provider_example" // string | The name of the provider to utilize
-    zone := "zone_example" // string | DNS zone to delete records of
-    name := "name_example" // string | Name of the DNS record(s) to delete
-    recordType := openapiclient.RecordType("A") // RecordType | RecordType of the DNS record(s) to delete
-    environment := "environment_example" // string | The name of the environment to utilize (optional)
-    requestBody := map[string]string{"key": "Inner_example"} // map[string]string | Meta data to pass through to the provider (optional)
+    zone := "zone_example" // string | Name of the DNS zone to delete a record of.
+    recordType := openapiclient.RecordType("A") // RecordType | The record type of the record to delete.
+    name := "name_example" // string | The record name of the record to delete.
+    xApiOptions := "xApiOptions_example" // string | Data used to access the API <br /><br />  Schema: <br />  { <br />  \"access_options\": { <br />  \"provider\": \"provider\", <br />  \"environment\": \"environment\", <br />  \"credentials_id\": \"00000000-0000-0000-0000-000000000000\" <br />  }, <br />  \"meta\": { <br />  \"additionalKey\": \"keyValue\" <br />  } <br />  }
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.RecordsApi.ApiDnsRecordsDelete(context.Background()).Provider(provider).Zone(zone).Name(name).RecordType(recordType).Environment(environment).RequestBody(requestBody).Execute()
+    resp, r, err := api_client.RecordsApi.DnsApiRecordsDelete(context.Background()).Zone(zone).RecordType(recordType).Name(name).XApiOptions(xApiOptions).Execute()
     if err.Error() != "" {
-        fmt.Fprintf(os.Stderr, "Error when calling `RecordsApi.ApiDnsRecordsDelete``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `RecordsApi.DnsApiRecordsDelete``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
 }
@@ -52,17 +50,15 @@ func main() {
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiApiDnsRecordsDeleteRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiDnsApiRecordsDeleteRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **provider** | **string** | The name of the provider to utilize | 
- **zone** | **string** | DNS zone to delete records of | 
- **name** | **string** | Name of the DNS record(s) to delete | 
- **recordType** | [**RecordType**](RecordType.md) | RecordType of the DNS record(s) to delete | 
- **environment** | **string** | The name of the environment to utilize | 
- **requestBody** | **map[string]string** | Meta data to pass through to the provider | 
+ **zone** | **string** | Name of the DNS zone to delete a record of. | 
+ **recordType** | [**RecordType**](RecordType.md) | The record type of the record to delete. | 
+ **name** | **string** | The record name of the record to delete. | 
+ **xApiOptions** | **string** | Data used to access the API &lt;br /&gt;&lt;br /&gt;  Schema: &lt;br /&gt;  { &lt;br /&gt;  \&quot;access_options\&quot;: { &lt;br /&gt;  \&quot;provider\&quot;: \&quot;provider\&quot;, &lt;br /&gt;  \&quot;environment\&quot;: \&quot;environment\&quot;, &lt;br /&gt;  \&quot;credentials_id\&quot;: \&quot;00000000-0000-0000-0000-000000000000\&quot; &lt;br /&gt;  }, &lt;br /&gt;  \&quot;meta\&quot;: { &lt;br /&gt;  \&quot;additionalKey\&quot;: \&quot;keyValue\&quot; &lt;br /&gt;  } &lt;br /&gt;  } | 
 
 ### Return type
 
@@ -74,7 +70,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
-- **Content-Type**: application/json, text/json, application/_*+json
+- **Content-Type**: Not defined
 - **Accept**: Not defined
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
@@ -82,9 +78,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## ApiDnsRecordsGet
+## DnsApiRecordsGet
 
-> []Record ApiDnsRecordsGet(ctx).Provider(provider).Zone(zone).Environment(environment).RecordType(recordType).Name(name).PageToken(pageToken).PageSize(pageSize).Execute()
+> []Record DnsApiRecordsGet(ctx).Zone(zone).XApiOptions(xApiOptions).RecordType(recordType).Name(name).Execute()
 
 Retrieves the DNS zone's resource records
 
@@ -101,23 +97,20 @@ import (
 )
 
 func main() {
-    provider := "provider_example" // string | The name of the provider to utilize
-    zone := "zone_example" // string | DNS zone to query
-    environment := "environment_example" // string | The name of the environment to utilize (optional)
-    recordType := openapiclient.RecordType("A") // RecordType | Filter by the record type (optional)
-    name := "name_example" // string | Filter by the record name (optional)
-    pageToken := "pageToken_example" // string | The token of the page to load (optional)
-    pageSize := int32(56) // int32 | The size of the page (optional)
+    zone := "zone_example" // string | DNS zone to query.
+    xApiOptions := "xApiOptions_example" // string | Data used to access the API <br /><br />  Schema: <br />  { <br />  \"access_options\": { <br />  \"provider\": \"provider\", <br />  \"environment\": \"environment\", <br />  \"credentials_id\": \"00000000-0000-0000-0000-000000000000\" <br />  }, <br />  \"meta\": { <br />  \"additionalKey\": \"keyValue\" <br />  } <br />  }
+    recordType := openapiclient.RecordType("A") // RecordType | Filter by the record type. (optional)
+    name := "name_example" // string | Filter by the record name. (optional)
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.RecordsApi.ApiDnsRecordsGet(context.Background()).Provider(provider).Zone(zone).Environment(environment).RecordType(recordType).Name(name).PageToken(pageToken).PageSize(pageSize).Execute()
+    resp, r, err := api_client.RecordsApi.DnsApiRecordsGet(context.Background()).Zone(zone).XApiOptions(xApiOptions).RecordType(recordType).Name(name).Execute()
     if err.Error() != "" {
-        fmt.Fprintf(os.Stderr, "Error when calling `RecordsApi.ApiDnsRecordsGet``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `RecordsApi.DnsApiRecordsGet``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `ApiDnsRecordsGet`: []Record
-    fmt.Fprintf(os.Stdout, "Response from `RecordsApi.ApiDnsRecordsGet`: %v\n", resp)
+    // response from `DnsApiRecordsGet`: []Record
+    fmt.Fprintf(os.Stdout, "Response from `RecordsApi.DnsApiRecordsGet`: %v\n", resp)
 }
 ```
 
@@ -127,18 +120,15 @@ func main() {
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiApiDnsRecordsGetRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiDnsApiRecordsGetRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **provider** | **string** | The name of the provider to utilize | 
- **zone** | **string** | DNS zone to query | 
- **environment** | **string** | The name of the environment to utilize | 
- **recordType** | [**RecordType**](RecordType.md) | Filter by the record type | 
- **name** | **string** | Filter by the record name | 
- **pageToken** | **string** | The token of the page to load | 
- **pageSize** | **int32** | The size of the page | 
+ **zone** | **string** | DNS zone to query. | 
+ **xApiOptions** | **string** | Data used to access the API &lt;br /&gt;&lt;br /&gt;  Schema: &lt;br /&gt;  { &lt;br /&gt;  \&quot;access_options\&quot;: { &lt;br /&gt;  \&quot;provider\&quot;: \&quot;provider\&quot;, &lt;br /&gt;  \&quot;environment\&quot;: \&quot;environment\&quot;, &lt;br /&gt;  \&quot;credentials_id\&quot;: \&quot;00000000-0000-0000-0000-000000000000\&quot; &lt;br /&gt;  }, &lt;br /&gt;  \&quot;meta\&quot;: { &lt;br /&gt;  \&quot;additionalKey\&quot;: \&quot;keyValue\&quot; &lt;br /&gt;  } &lt;br /&gt;  } | 
+ **recordType** | [**RecordType**](RecordType.md) | Filter by the record type. | 
+ **name** | **string** | Filter by the record name. | 
 
 ### Return type
 
@@ -158,9 +148,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## ApiDnsRecordsPost
+## DnsApiRecordsPost
 
-> Record ApiDnsRecordsPost(ctx).CreateRecordRequestModel(createRecordRequestModel).Execute()
+> Record DnsApiRecordsPost(ctx).XApiOptions(xApiOptions).CreateRecordRequestModel(createRecordRequestModel).Execute()
 
 Creates a new DNS resource record
 
@@ -177,17 +167,18 @@ import (
 )
 
 func main() {
-    createRecordRequestModel := *openapiclient.NewCreateRecordRequestModel("Provider_example", "Zone_example", "Name_example", openapiclient.RecordType("A"), "Data_example") // CreateRecordRequestModel | Data used to create a DNS resource record
+    xApiOptions := "xApiOptions_example" // string | Data used to access the API <br /><br />  Schema: <br />  { <br />  \"access_options\": { <br />  \"provider\": \"provider\", <br />  \"environment\": \"environment\", <br />  \"credentials_id\": \"00000000-0000-0000-0000-000000000000\" <br />  }, <br />  \"meta\": { <br />  \"additionalKey\": \"keyValue\" <br />  } <br />  }
+    createRecordRequestModel := *openapiclient.NewCreateRecordRequestModel("Zone_example", "Name_example", openapiclient.RecordType("A"), "Data_example") // CreateRecordRequestModel | Data used to create a DNS resource record
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.RecordsApi.ApiDnsRecordsPost(context.Background()).CreateRecordRequestModel(createRecordRequestModel).Execute()
+    resp, r, err := api_client.RecordsApi.DnsApiRecordsPost(context.Background()).XApiOptions(xApiOptions).CreateRecordRequestModel(createRecordRequestModel).Execute()
     if err.Error() != "" {
-        fmt.Fprintf(os.Stderr, "Error when calling `RecordsApi.ApiDnsRecordsPost``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `RecordsApi.DnsApiRecordsPost``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `ApiDnsRecordsPost`: Record
-    fmt.Fprintf(os.Stdout, "Response from `RecordsApi.ApiDnsRecordsPost`: %v\n", resp)
+    // response from `DnsApiRecordsPost`: Record
+    fmt.Fprintf(os.Stdout, "Response from `RecordsApi.DnsApiRecordsPost`: %v\n", resp)
 }
 ```
 
@@ -197,11 +188,12 @@ func main() {
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiApiDnsRecordsPostRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiDnsApiRecordsPostRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+ **xApiOptions** | **string** | Data used to access the API &lt;br /&gt;&lt;br /&gt;  Schema: &lt;br /&gt;  { &lt;br /&gt;  \&quot;access_options\&quot;: { &lt;br /&gt;  \&quot;provider\&quot;: \&quot;provider\&quot;, &lt;br /&gt;  \&quot;environment\&quot;: \&quot;environment\&quot;, &lt;br /&gt;  \&quot;credentials_id\&quot;: \&quot;00000000-0000-0000-0000-000000000000\&quot; &lt;br /&gt;  }, &lt;br /&gt;  \&quot;meta\&quot;: { &lt;br /&gt;  \&quot;additionalKey\&quot;: \&quot;keyValue\&quot; &lt;br /&gt;  } &lt;br /&gt;  } | 
  **createRecordRequestModel** | [**CreateRecordRequestModel**](CreateRecordRequestModel.md) | Data used to create a DNS resource record | 
 
 ### Return type

@@ -1,19 +1,19 @@
-# \ZonesApi
+# \ZoneApi
 
 All URIs are relative to *http://localhost*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**DnsApiZonesDelete**](ZonesApi.md#DnsApiZonesDelete) | **Delete** /dns/api/Zones | Deletes a DNS zone from the passed provider
-[**DnsApiZonesGet**](ZonesApi.md#DnsApiZonesGet) | **Get** /dns/api/Zones | Retrieves the DNS zones assigned to the account
-[**DnsApiZonesPost**](ZonesApi.md#DnsApiZonesPost) | **Post** /dns/api/Zones | Creates a new DNS zone
-[**DnsApiZonesZoneGet**](ZonesApi.md#DnsApiZonesZoneGet) | **Get** /dns/api/Zones/{zone} | Loads the specified DNS zone
+[**ApiDnsZoneDelete**](ZoneApi.md#ApiDnsZoneDelete) | **Delete** /api/dns/Zone | Deletes a DNS zone from the passed provider
+[**ApiDnsZoneGet**](ZoneApi.md#ApiDnsZoneGet) | **Get** /api/dns/Zone | Retrieves the DNS zones assigned to the account
+[**ApiDnsZonePost**](ZoneApi.md#ApiDnsZonePost) | **Post** /api/dns/Zone | Creates a new DNS zone
+[**ApiDnsZoneZoneGet**](ZoneApi.md#ApiDnsZoneZoneGet) | **Get** /api/dns/Zone/{zone} | Loads the specified DNS zone
 
 
 
-## DnsApiZonesDelete
+## ApiDnsZoneDelete
 
-> DnsApiZonesDelete(ctx).Name(name).XApiOptions(xApiOptions).Execute()
+> ApiDnsZoneDelete(ctx).Name(name).XApiOptions(xApiOptions).Execute()
 
 Deletes a DNS zone from the passed provider
 
@@ -35,9 +35,9 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.ZonesApi.DnsApiZonesDelete(context.Background()).Name(name).XApiOptions(xApiOptions).Execute()
+    resp, r, err := api_client.ZoneApi.ApiDnsZoneDelete(context.Background()).Name(name).XApiOptions(xApiOptions).Execute()
     if err.Error() != "" {
-        fmt.Fprintf(os.Stderr, "Error when calling `ZonesApi.DnsApiZonesDelete``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `ZoneApi.ApiDnsZoneDelete``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
 }
@@ -49,7 +49,7 @@ func main() {
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiDnsApiZonesDeleteRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiApiDnsZoneDeleteRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -75,9 +75,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## DnsApiZonesGet
+## ApiDnsZoneGet
 
-> []Zone DnsApiZonesGet(ctx).XApiOptions(xApiOptions).Execute()
+> []Zone ApiDnsZoneGet(ctx).XApiOptions(xApiOptions).Execute()
 
 Retrieves the DNS zones assigned to the account
 
@@ -98,13 +98,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.ZonesApi.DnsApiZonesGet(context.Background()).XApiOptions(xApiOptions).Execute()
+    resp, r, err := api_client.ZoneApi.ApiDnsZoneGet(context.Background()).XApiOptions(xApiOptions).Execute()
     if err.Error() != "" {
-        fmt.Fprintf(os.Stderr, "Error when calling `ZonesApi.DnsApiZonesGet``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `ZoneApi.ApiDnsZoneGet``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `DnsApiZonesGet`: []Zone
-    fmt.Fprintf(os.Stdout, "Response from `ZonesApi.DnsApiZonesGet`: %v\n", resp)
+    // response from `ApiDnsZoneGet`: []Zone
+    fmt.Fprintf(os.Stdout, "Response from `ZoneApi.ApiDnsZoneGet`: %v\n", resp)
 }
 ```
 
@@ -114,7 +114,7 @@ func main() {
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiDnsApiZonesGetRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiApiDnsZoneGetRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -139,9 +139,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## DnsApiZonesPost
+## ApiDnsZonePost
 
-> Zone DnsApiZonesPost(ctx).XApiOptions(xApiOptions).CreateZoneRequestModel(createZoneRequestModel).Execute()
+> Zone ApiDnsZonePost(ctx).XApiOptions(xApiOptions).CreateZoneRequestModel(createZoneRequestModel).Execute()
 
 Creates a new DNS zone
 
@@ -163,13 +163,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.ZonesApi.DnsApiZonesPost(context.Background()).XApiOptions(xApiOptions).CreateZoneRequestModel(createZoneRequestModel).Execute()
+    resp, r, err := api_client.ZoneApi.ApiDnsZonePost(context.Background()).XApiOptions(xApiOptions).CreateZoneRequestModel(createZoneRequestModel).Execute()
     if err.Error() != "" {
-        fmt.Fprintf(os.Stderr, "Error when calling `ZonesApi.DnsApiZonesPost``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `ZoneApi.ApiDnsZonePost``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `DnsApiZonesPost`: Zone
-    fmt.Fprintf(os.Stdout, "Response from `ZonesApi.DnsApiZonesPost`: %v\n", resp)
+    // response from `ApiDnsZonePost`: Zone
+    fmt.Fprintf(os.Stdout, "Response from `ZoneApi.ApiDnsZonePost`: %v\n", resp)
 }
 ```
 
@@ -179,7 +179,7 @@ func main() {
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiDnsApiZonesPostRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiApiDnsZonePostRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -205,9 +205,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## DnsApiZonesZoneGet
+## ApiDnsZoneZoneGet
 
-> Zone DnsApiZonesZoneGet(ctx, zone).XApiOptions(xApiOptions).Execute()
+> Zone ApiDnsZoneZoneGet(ctx, zone).XApiOptions(xApiOptions).Execute()
 
 Loads the specified DNS zone
 
@@ -229,13 +229,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.ZonesApi.DnsApiZonesZoneGet(context.Background(), zone).XApiOptions(xApiOptions).Execute()
+    resp, r, err := api_client.ZoneApi.ApiDnsZoneZoneGet(context.Background(), zone).XApiOptions(xApiOptions).Execute()
     if err.Error() != "" {
-        fmt.Fprintf(os.Stderr, "Error when calling `ZonesApi.DnsApiZonesZoneGet``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `ZoneApi.ApiDnsZoneZoneGet``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `DnsApiZonesZoneGet`: Zone
-    fmt.Fprintf(os.Stdout, "Response from `ZonesApi.DnsApiZonesZoneGet`: %v\n", resp)
+    // response from `ApiDnsZoneZoneGet`: Zone
+    fmt.Fprintf(os.Stdout, "Response from `ZoneApi.ApiDnsZoneZoneGet`: %v\n", resp)
 }
 ```
 
@@ -249,7 +249,7 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiDnsApiZonesZoneGetRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiApiDnsZoneZoneGetRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
